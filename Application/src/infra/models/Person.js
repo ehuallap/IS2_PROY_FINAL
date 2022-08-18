@@ -19,39 +19,29 @@ module.exports = (sequelize, DataTypes) => {
         primaryKey: true,
         type: DataTypes.INTEGER,
       },
-      name: {
+      first_name: {
         type: DataTypes.STRING,
       },
-      email: {
+      last_name: {
+        type: DataTypes.STRING,
+      },
+      dni: {
         type: DataTypes.STRING,
         unique: true,
         allowNull: false,
       },
-      password: {
-        type: DataTypes.STRING,
-        allowNull: false,
+      home_phone: {
+        type: DataTypes.STRING
       },
-      verifiedAt: {
-        allowNull: true,
-        type: DataTypes.DATE,
-        field: 'verified_at',
-      },
-      createdAt: {
-        allowNull: false,
-        type: DataTypes.DATE,
-        field: 'created_at',
-      },
-      updatedAt: {
-        allowNull: false,
-        type: DataTypes.DATE,
-        field: 'updated_at',
+      mobile_phone: {
+        type: DataTypes.STRING
       },
     },
     {
       sequelize,
       modelName: 'Person',
       underscored: true,
-      tableName: 'users',
+      tableName: 'persons',
     }
   );
 
