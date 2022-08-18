@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
 
-  User.init(
+  Person.init(
     {
       id: {
         autoIncrement: true,
@@ -49,11 +49,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: 'User',
+      modelName: 'Person',
       underscored: true,
       tableName: 'users',
     }
   );
 
-  return User;
+  return Person;
 };
