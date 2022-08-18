@@ -31,6 +31,22 @@ Renovar completamente el proceso de toma de asistencia para los docentes y estud
 * *Estudiar el desarrollo de aplicaciones Android y aplicaciones web.*
 * *Disminuir la carga laboral del personal docente y administrativo.*
 
+## Propuesta
+La asistencia es una de las tareas administrativas que deben realizarse al comienzo de cada clase. Esto conlleva a la pérdida de tiempo valioso al comienzo de  la clase que es aproximadamente el 10\% de la misma y a veces es difícil de gestionar. Es por ello que es necesaria la elaboración de una aplicación móvil y web que utilice métodos de identificación biométrica y de identificación convencional, aplicando el uso de base de datos relaciones junto con la implementación de APIs; además el uso de una plataforma web desde donde se podrá administrar la aplicación, mostrar estadísticas de los estudiantes y de las clases en general utilizando tecnologías modernas como son HTML5, CSS, Javascript, Web Services, Base de datos relacional. 
+
+## Beneficios
+* **Ahorrar tiempo**: Con nuestro sistema tendremos un único punto de referencia para los registros de asistencia de toda la universidad. No es necesario utilizar los tradicionales múltiples registros.
+* **Aumentar la precisión:** Con el sistema se reduce drásticamente el error humano y los profesores pueden justificar eficientemente inasistencias o tardanza.
+* **Garantizar la integridad de los datos:** En comparación con los anticuados registros en papel o excel que pueden perderse, destruirse o eliminarse accidentalmente, sus registros de asistencia están seguros; y disponibles en la nube.
+* **Mejorar la productividad de las clases:** Ya que no se perderá tiempo en la toma de asistencia.
+* **Reducir el trabajo administrativo:** Los registros y estadísticas estarán disponibles al instante.
+* **Disminuir los costes administrativos:** Que requieren gasto de tiempo y trabajo repetitivo.
+
+## Impacto Social
+La iniciativa tiene repercusiones positivas para:
+**Estudiantes:** Reducción del el absentismo, aumentar la puntualidad, mejorar la concentración, la retención, el rendimiento y el éxito.
+**Docentes:** Gestionar y mantener la asistencia ya no es una molestia. Toma de asistencia rápida y eficiente.
+**Dirección de las Escuelas y Facultades:** El equipo directivo recibe informes de asistencia generados automáticamente al final de cada día.
 
 
 ## 📝 Para inicializar el proyecto WEB
