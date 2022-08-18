@@ -49,6 +49,26 @@ La iniciativa tiene repercusiones positivas para:
 **Dirección de las Escuelas y Facultades:** El equipo directivo recibe informes de asistencia generados automáticamente al final de cada día.
 
 
+## Diagrama de Clases
+
+## Diagrama de Casos de Uso
+
+
+### Wireframes
+Para las diagramamaciones de las se utilizó Figma
+
+**Link APP:** -  [Versión App](https://www.figma.com/file/98YCTCsRYmb6R7Mibg79dR/Scooby-Attendance?node-id=0%3A1)
+**Link WEB** - [Versión Web](https://www.figma.com/file/VvYuJi1rbh2pscG7iIGO3n/Admin-Dashboard)
+
+
+## Funcionalidades
+
+
+
+
+
+
+
 ## 📝 Para inicializar el proyecto WEB
 Ejecute primero los siguientes comandos
 ```
