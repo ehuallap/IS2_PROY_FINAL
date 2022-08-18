@@ -51,6 +51,10 @@ La iniciativa tiene repercusiones positivas para:
 
 ## Diagrama de Clases
 
+<p align="center">
+  <img src="https://github.com/MrsblR/FinalProjectIS/blob/main/Evidences/D02.jpg" alt="Sublime's custom image"/>
+</p>
+
 ## Diagrama de Casos de Uso
 
 <p align="center">
