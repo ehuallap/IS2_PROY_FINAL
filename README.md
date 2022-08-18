@@ -30,3 +30,19 @@ Renovar completamente el proceso de toma de asistencia para los docentes y estud
 * *Poner en funcionamiento bases de datos y servidores que funcione conjuntamente con la aplicación.*
 * *Estudiar el desarrollo de aplicaciones Android y aplicaciones web.*
 * *Disminuir la carga laboral del personal docente y administrativo.*
+
+
+
+## 📝 Para inicializar el proyecto WEB
+Ejecute primero los siguientes comandos
+```
+cd attendance
+npm install
+npm run dev
+```
+
+## 📝 Para inicializar el proyecto Android
+Ejecute primero los siguientes comandos
+```
+emulator -avd scooby
+```
