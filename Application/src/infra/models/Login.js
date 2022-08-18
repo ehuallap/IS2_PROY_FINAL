@@ -22,11 +22,14 @@ module.exports = (sequelize, DataTypes) => {
       emailAddress : {
         type: DataTypes.STRING,
       },
-      personId: {
+      imei: {
         type: DataTypes.STRING,
       },
+      personId: {
+        type: DataTypes.INTEGER,
+      },
       role: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
       },
     },
     {
