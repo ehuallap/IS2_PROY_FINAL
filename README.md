@@ -75,20 +75,20 @@ Para las diagramamaciones de las se utilizó Figma
 
 ## Funcionalidades
 
- - [ ] Iniciar sesión.
- - [ ] Cerrar sesión.
- - [ ] Asignar curso a estudiante.
+ - [X] Iniciar sesión.
+ - [X] Cerrar sesión.
+ - [X] Asignar curso a estudiante.
  - [ ] Ver estadísticas de asistencia.
  - [ ] Generar reportes.
- - [ ] Crear curso.
- - [ ] Editar curso.
- - [ ] Eliminar curso.
- - [ ] Crear horario.
+ - [X] Crear curso.
+ - [X] Editar curso.
+ - [X] Eliminar curso.
+ - [X] Crear horario.
  - [ ] Editar horario.
  - [ ] Eliminar horario.
- - [ ] Ver cursos.
- - [ ] Ver horarios.
- - [ ] Marcar asistencia.
+ - [X] Ver cursos.
+ - [X] Ver horarios.
+ - [X] Marcar asistencia.
  - [ ] Ver asistencia por curso
 
 
