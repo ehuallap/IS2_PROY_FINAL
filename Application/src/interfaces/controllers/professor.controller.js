@@ -169,14 +169,12 @@ class ProfessorController {
       return null;
     });
 
-    console.log("Se creo el profito -------------->", dataProfessor);
     const resultLogin = instanceLoginService.create({ Email, Password, idDNI });
     const dataLogin = await resultLogin.catch((err) => {
       console.log("Professor Controller Error", err);
       return null;
     });
 
-    console.log("Se creo el data Login ----------> ", dataLogin);
     return dataLogin;
   }
 
