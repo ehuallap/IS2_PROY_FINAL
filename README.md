@@ -1680,3 +1680,16 @@ class CityService extends BaseService {
 module.exports = CityService;
 
  ```
+ 
+ ## PRINCIPIOS DE DDD
+ ### 1 -
+ #### Descripción 
+ #### Fragmento de código
+ 
+ ### 1 -
+ #### Descripción 
+ #### Fragmento de código
+ 
+ ### 1 -
+ #### Descripción 
+ #### Fragmento de código
