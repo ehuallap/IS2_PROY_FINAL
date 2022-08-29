@@ -78,18 +78,17 @@ Para las diagramamaciones de las se utilizó Figma
  - [X] Iniciar sesión.
  - [X] Cerrar sesión.
  - [X] Asignar curso a estudiante.
- - [ ] Ver estadísticas de asistencia.
- - [ ] Generar reportes.
+ - [X] Ver estadísticas de asistencia.
+ - [X] Generar reportes.
  - [X] Crear curso.
  - [X] Editar curso.
  - [X] Eliminar curso.
  - [X] Crear horario.
- - [ ] Editar horario.
- - [ ] Eliminar horario.
+ - [X] Editar horario.
  - [X] Ver cursos.
  - [X] Ver horarios.
  - [X] Marcar asistencia.
- - [ ] Ver asistencia por curso
+ - [X] Ver asistencia por curso
 
 
 
@@ -100,12 +99,6 @@ Ejecute primero los siguientes comandos
 cd attendance
 npm install
 npm run dev
-```
-
-## 📝 Para inicializar el proyecto Android
-Ejecute primero los siguientes comandos
-```
-emulator -avd scooby
 ```
 
 ## Resumen de conceptos utilizados
@@ -1739,7 +1732,7 @@ module.exports = CityService;
  
  En todo el código desarrollado seguimos buenas practicas y además considerando un lenguaje común para todo el desarrollo final.
  
- ```
+ ```javascript
  const BaseRepository = require("./base.repository");
 
 class LoginRepository extends BaseRepository {
@@ -1769,7 +1762,7 @@ module.exports = LoginRepository;
  
  Al utilizar las tablas de persistencia, podemos ver que seguimos el principio de persistencia, ademas que las funciones desarrolladas en el modelo estan completamente desligadas del uso que se le dé posteriormente.
  
- ```
+ ```javascript
  const express = require("express");
 const router = express.Router();
 const connectionDb = require("../../config/dbconnections");
@@ -1802,7 +1795,7 @@ module.exports = PersonModel;
 #### Fragmento de código
 Aqui podemos observar como un servicio se comunica con los repositorios conectando de esta forma las capas.
 
- ```
+ ```javascript
  const BaseService = require("./base.service");
 
 class LoginService extends BaseService {
