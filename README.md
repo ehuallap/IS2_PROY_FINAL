@@ -1151,6 +1151,27 @@ module.exports = CourseRepository
 
 Fragmento de Código
 
+```javascript
+async create({ Course_Name, SectionID, TypeID, ProfessorID, Semestre }) {
+    const con = connectionDb.promise();
+    const data = await con.query(
+      "INSERT INTO course (Course_Name,SectionID,TypeID,ProfessorID,NumEst,Semestre) VALUES (?,?,?,?,?,?)",
+      [Course_Name, SectionID, TypeID, ProfessorID, 0, Semestre]
+    );
+
+    console.log("error", data);
+    return data[0];
+  }
+
+  async getAll() {
+    const con = connectionDb.promise();
+    const data = await con.query(
+      "SELECT * FROM course INNER JOIN section ON course.SectionID = section.SectionID INNER JOIN type ON course.TypeID = type.TypeID"
+    );
+    return data[0];
+  }
+```
+
 ## PRINCIPIOS SOLID
 
 - Principio de inversión de dependencia (DIP)
