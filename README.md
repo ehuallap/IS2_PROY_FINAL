@@ -8,11 +8,6 @@
   <img src="https://github.com/VILLA7523/theoriginscooby/blob/main/WEB/src/public/images/logodog.png?raw=true" alt="Sublime's custom image"/>
 </p>
 
-**Tabla de contenido**
-
-
-
-[TOC]
 
 ## Contexto
 Debido a la coyuntura actual generada por el virus SARS COV-2, las clases virtuales se ha vuelto un estándar a nivel mundial, esto nos llevó a poder redefinir las maneras de como realizar muchas de nuestras actividades, algunas con mayor facilidad y otras que sean dificultados.
