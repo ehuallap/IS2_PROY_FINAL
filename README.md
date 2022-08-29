@@ -1682,14 +1682,34 @@ module.exports = CityService;
  ```
  
  ## PRINCIPIOS DE DDD
- ### 1 -
+ 
+ ### 1 - Ubiquitous Lenguage
+ 
  #### Descripción 
+- El lenguaje ubicuo debe expresarse en el modelo de dominio.
+- Ubiquitous Language une a las personas del equipo del proyecto.
+- Ubiquitous Language elimina imprecisiones y contradicciones de los expertos del dominio.
+- El lenguaje ubicuo no es un lenguaje de negocios impuesto por expertos en dominios.
+- El lenguaje ubicuo no es un lenguaje utilizado en las industrias.
+- El lenguaje ubicuo evoluciona con el tiempo, no se define por completo en una sola reunión.
+- Los conceptos que no forman parte del Lenguaje Ubicuo deben ser rechazados.
+
  #### Fragmento de código
  
- ### 1 -
+ ### 2 - Persistance Ignorance
+ 
  #### Descripción 
+ - Dentro de DDD no se graba se persiste
+ - El almacenamiento de datos no condiciona el modelo
+ - La utilización de la información que provee el modelo esta desligada de la forma de presentación.
+ 
  #### Fragmento de código
  
- ### 1 -
+ ### 3 - Services
  #### Descripción 
+ - Los servicios de la aplicación son la interfaz utilizada por el mundo exterior, donde el mundo exterior no puede comunicarse a través de nuestros objetos Entidad.
+ - La intefaz puede obtener representaciones no directas de ellos. 
+ - Los Servicios de aplicaciones asignan mensajes externos a operaciones y procesos internos
+ - Los servicios se encargan de la comunicación entre las capas de Dominio e Infraestructura para proporcionar operaciones cohesivas para clientes externos.
  #### Fragmento de código
+ 
