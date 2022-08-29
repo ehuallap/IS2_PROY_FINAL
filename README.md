@@ -1755,7 +1755,6 @@ module.exports = LoginRepository;
  
  #### Descripción 
  - Dentro de DDD no se graba se persiste
- - El almacenamiento de datos no condiciona el modelo
  - La utilización de la información que provee el modelo esta desligada de la forma de presentación.
  
  #### Fragmento de código
