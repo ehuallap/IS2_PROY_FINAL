@@ -19,8 +19,3 @@ container
   .register({ CityRepository: asClass(CityRepository).singleton() });
 
 module.exports = container;
-// .register({ CityRoutes: asFunction(CityRoutes).singleton() })
-//   app: asClass(app).singleton(),
-//   router: asFunction(Routes).singleton(),
-//   config: asValue(config)
-// })
