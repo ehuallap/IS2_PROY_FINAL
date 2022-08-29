@@ -107,6 +107,41 @@ Ejecute primero los siguientes comandos
 ```
 emulator -avd scooby
 ```
+
+## Resumen de conceptos utilizados
+#### ESTILOS DE LA PROGRAMACIÓN
+- Letterbox
+- Tantrum
+- Aspects
+- Persistent Tables
+- Declared Intentions
+- Things
+
+#### CODIFICACIÓN LEGIBLE (CLEAN CODE)
+
+- Comentarios
+- Reglas de nombres
+- Consejos de comprensibilidad
+- Reglas de funciones
+- Objetos y estructuras de datos
+- Captalize SQL Special Words
+
+
+#### PRINCIPIOS SOLID
+
+- Principio de inversión de dependencia (DIP)
+- Principio abierto/cerrado (OCP)
+- Interface segregation principle(ISP)
+- Liskov Substitution Principle (LSP)
+
+#### PRINCIPIOS DE DDD
+ - Ubiquitous Lenguage
+ - Persistance Ignorance
+ - Services
+
+
+# Conceptos Utilizados
+
 ## ESTILOS DE LA PROGRAMACIÓN
 - Letterbox
 - Tantrum
@@ -1685,6 +1720,9 @@ module.exports = CityService;
  ```
  
  ## PRINCIPIOS DE DDD
+ - Ubiquitous Lenguage
+ - Persistance Ignorance
+ - Services
  
  ### 1 - Ubiquitous Lenguage
  
