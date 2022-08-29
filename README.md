@@ -589,6 +589,7 @@ const courseStudentsDb = new CourseStudentsModel();
 const SheduleModel = require("../../domain/models/shedule.model");
 const sheduleDb = new SheduleModel();
 
+// Instancias requeridas
 const ProfessorService = require("../../aplication/services/professor.service");
 const ProfessorRepository = require("../../domain/repository/professor.repository");
 
@@ -610,6 +611,8 @@ const LoginRepository = require("../../domain/repository/login.repository");
 const CourseStudentsService = require("../../aplication/services/courseStudents.service");
 const CourseStudentsRepository = require("../../domain/repository/courseStudents.repository");
 
+
+// Definicion de funciones
 class ProfessorController {
   async getAll() {
     var professorRepository = new ProfessorRepository(professorDb);
@@ -1150,27 +1153,6 @@ module.exports = CourseRepository
 - Aunque las palabras especiales de SQL y los nombres de funciones no distinguen entre mayúsculas y minúsculas, es una práctica común usar mayúsculas para distinguirlos de los nombres de tablas y columnas.
 
 Fragmento de Código
-
-```javascript
-async create({ Course_Name, SectionID, TypeID, ProfessorID, Semestre }) {
-    const con = connectionDb.promise();
-    const data = await con.query(
-      "INSERT INTO course (Course_Name,SectionID,TypeID,ProfessorID,NumEst,Semestre) VALUES (?,?,?,?,?,?)",
-      [Course_Name, SectionID, TypeID, ProfessorID, 0, Semestre]
-    );
-
-    console.log("error", data);
-    return data[0];
-  }
-
-  async getAll() {
-    const con = connectionDb.promise();
-    const data = await con.query(
-      "SELECT * FROM course INNER JOIN section ON course.SectionID = section.SectionID INNER JOIN type ON course.TypeID = type.TypeID"
-    );
-    return data[0];
-  }
-```
 
 ## PRINCIPIOS SOLID
 
@@ -1717,6 +1699,27 @@ module.exports = CityService;
 
  #### Fragmento de código
  
+ En todo el código desarrollado seguimos buenas practicas y además considerando un lenguaje común para todo el desarrollo final.
+ 
+ ```
+ const BaseRepository = require("./base.repository");
+
+class LoginRepository extends BaseRepository {
+  constructor(LoginDb) {
+    super(LoginDb);
+  }
+  async getAllWithoutPagination() {
+    return this.model.find();
+  }
+
+  async authenticate(email, password) {
+    return this.model.authenticate(email, password);
+  }
+}
+
+module.exports = LoginRepository;
+ ```
+ 
  ### 2 - Persistance Ignorance
  
  #### Descripción 
@@ -1726,11 +1729,69 @@ module.exports = CityService;
  
  #### Fragmento de código
  
+ Al utilizar las tablas de persistencia, podemos ver que seguimos el principio de persistencia, ademas que las funciones desarrolladas en el modelo estan completamente desligadas del uso que se le dé posteriormente.
+ 
+ ```
+ const express = require("express");
+const router = express.Router();
+const connectionDb = require("../../config/dbconnections");
+
+class PersonModel {
+  async getAll() {
+    const con = connectionDb.promise();
+    const data = await con.query("SELECT * FROM person");
+    return data[0];
+  }
+  async create({ First_Name, Last_Name, Email, DNI, Mobile_Phone, CityID }) {
+    const con = connectionDb.promise();
+    const data = await con.query(
+      "INSERT INTO person (First_Name,Last_Name,Email,DNI,Home_Phone,Mobile_Phone,CityID) VALUES (?,?,?,?,?,?,?)",
+      [First_Name, Last_Name, Email, DNI, null, Mobile_Phone, CityID]
+    );
+    return data[0].insertId;
+  }
+}
+module.exports = PersonModel;
+ ```
+ 
  ### 3 - Services
  #### Descripción 
  - Los servicios de la aplicación son la interfaz utilizada por el mundo exterior, donde el mundo exterior no puede comunicarse a través de nuestros objetos Entidad.
  - La intefaz puede obtener representaciones no directas de ellos. 
  - Los Servicios de aplicaciones asignan mensajes externos a operaciones y procesos internos
  - Los servicios se encargan de la comunicación entre las capas de Dominio e Infraestructura para proporcionar operaciones cohesivas para clientes externos.
- #### Fragmento de código
- 
+
+#### Fragmento de código
+Aqui podemos observar como un servicio se comunica con los repositorios conectando de esta forma las capas.
+
+ ```
+ const BaseService = require("./base.service");
+
+class LoginService extends BaseService {
+  constructor(LoginRepository) {
+    super(LoginRepository);
+    this._LoginRepository = LoginRepository;
+  }
+
+  async authenticate(email, password) {
+    if (!email || !password) {
+      const error = new Error();
+      error.status = 400;
+      error.message = "Email or password missing";
+      throw error;
+    }
+
+    const entity = await this.repository.authenticate(email, password);
+
+    if (!entity) {
+      const error = new Error();
+      error.status = 400;
+      error.message = "Failed authentication";
+      throw error;
+    }
+    return entity;
+  }
+}
+
+module.exports = LoginService;
+ ```
