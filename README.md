@@ -108,6 +108,12 @@ Ejecute primero los siguientes comandos
 emulator -avd scooby
 ```
 ## ESTILOS DE LA PROGRAMACIÓN
+- Letterbox
+- Tantrum
+- Aspects
+- Persistent Tables
+- Declared Intentions
+- Things
 
 ### Estilo 1 - Letterbox
 
@@ -436,7 +442,117 @@ class CityRepository extends BaseRepository {
 module.exports = CityRepository;
 ```
 
+### Estilo 4 Persistent Tables
+
+#### Descripción
+
+- Los datos de entrada del problema se modelan como entidades con relaciones entre ellas
+
+- Los datos se colocan en tablas, con columnas que potencialmente hacen referencia cruzada a datos en otras tablas
+
+- Existencia de un motor de consulta relacional
+
+- El problema se resuelve emitiendo consultas sobre los datos tabulares.
+
+#### Fragmento de código
+
+```javascript
+async findByName(city) {
+  const con = connectionDb.promise();
+  const data = await con.query("SELECT * FROM city WHERE City_Name = ?", [
+    city,
+  ]);
+  return data[0];
+}
+async getAll() {
+  const connection = connectionDb.promise();
+  const data = await con.query(
+    "SELECT * FROM student INNER JOIN person ON student.PersonID = person.PersonID INNER JOIN city ON person.CityID = city.CityID"
+  );
+  return data[0];
+}
+```
+
+### Estilo 5 Declared Intentions
+
+#### Descripción
+
+- Existencia de un verificador de tipos en tiempo de ejecución
+
+- Los procedimientos y funciones declaran qué tipos de argumentos esperan
+
+- Si las personas que llaman envían argumentos de tipos que no se esperan, el
+   los procedimientos/funciones no se ejecutan.
+  
+#### Fragmento de código
+ 
+```javascript
+  async deleteInscription(id, StudentId) {
+    if (!id || !StudentId) {
+      const error = new Error();
+      error.status = 100;
+      error.message = "El parámetro ID debe ser enviado";
+      throw error;
+    }
+    const entity = await this.repository.deleteInscription(id, StudentId);
+    if (!entity) {
+      const error = new Error();
+      error.status = 500;
+      error.message = "Entidad no encontrada";
+      throw error;
+    }
+    return entity;
+  }
+```
+
+### Estilo 6 Things
+
+#### Descripción
+
+- El problema mayor se descompone en 'cosas' que tienen sentido para el dominio del problema.
+- Cada 'cosa' es una cápsula de datos que expone procedimientos al resto del mundo.
+- Nunca se accede a los datos directamente, solo a través de estos procedimientos.
+- Las cápsulas pueden reapropiarse de procedimientos definidos en otras cápsulas.
+
+#### Fragmento de código
+```javascript
+class BaseRepository {
+  constructor(model) {
+    this.model = model;
+  }
+  async get(id) {
+    return this.model.get(id);
+  }
+  async getAll() {
+    return this.model.getAll();
+  }
+  async getByName(name) {
+    return this.model.getByName(name);
+  }
+  async create(entity) {
+    return this.model.create(entity);
+  }
+  async update(entity) {
+    return this.model.update(entity);
+  }
+  async delete(id) {
+    return this.model.delete(id);
+  }
+}
+```
+
+
+
+
+
 ## CODIFICACIÓN LEGIBLE (CLEAN CODE)
+
+- Comentarios
+- Reglas de nombres
+- Consejos de comprensibilidad
+- Reglas de funciones
+- Objetos y estructuras de datos
+- Captalize SQL Special Words
 
 ### Clean Code 1 - Comentarios
 
@@ -1028,7 +1144,7 @@ module.exports = CourseRepository
   }
 ```
 
-### Clean Code - 7 Capitalize SQL Special Words
+### Clean Code - 6 Capitalize SQL Special Words
 #### Descripción
 - La interacción con la base de datos es una parte importante de la mayoría de las aplicaciones web. Si está escribiendo consultas SQL sin procesar, es una buena idea mantenerlas legibles también.
 - Aunque las palabras especiales de SQL y los nombres de funciones no distinguen entre mayúsculas y minúsculas, es una práctica común usar mayúsculas para distinguirlos de los nombres de tablas y columnas.
@@ -1036,6 +1152,12 @@ module.exports = CourseRepository
 Fragmento de Código
 
 ## PRINCIPIOS SOLID
+
+- Principio de inversión de dependencia (DIP)
+- Principio abierto/cerrado (OCP)
+- Interface segregation principle(ISP)
+- Liskov Substitution Principle (LSP)
+
 ### 1-  Principio de inversión de dependencia (DIP)
 
 #### Descripción
@@ -1433,3 +1555,128 @@ class BaseService {
   }
 }
 ```
+
+### 4 - Liskov Substitution Principle
+
+#### Descripción
+
+Cuando una Clase hija no puede realizar las mismas acciones que su Clase padre, esto puede causar errores.
+
+Si tienes una clase y creas otra clase a partir de ella, ésta se convierte en padre y la nueva clase en hijo. La clase hija debe ser capaz de hacer todo lo que la clase padre puede hacer. Este proceso se llama Herencia.
+
+La clase hija debe ser capaz de procesar las mismas peticiones y entregar el mismo resultado que la clase padre o puede entregar un resultado que sea del mismo tipo.
+
+La imagen muestra que la clase padre entrega café (puede ser cualquier tipo de café). Es aceptable que la Clase hija entregue Cappucino porque es un tipo específico de Café, pero NO es aceptable que entregue Agua.
+
+Si la Clase hija no cumple con estos requisitos, significa que la Clase hija ha cambiado completamente y viola este principio.
+
+#### Objetivo
+
+Este principio tiene como objetivo reforzar la consistencia para que la Clase padre o su Clase hija puedan ser utilizadas de la misma manera sin ningún error.
+
+#### Fragmento de código
+
+```javascript
+// PARENT
+
+class BaseService {
+  constructor(Repository) {
+    this.repository = Repository;
+  }
+  async get(id) {
+    if (!id) {
+      const error = new Error();
+      error.status = 400;
+      error.message = "Parametro id debe ser enviado";
+      throw error;
+    }
+
+    const entity = await this.repository.get(id);
+    if (!entity) {
+      const error = new Error();
+      error.status = 400;
+      error.message = "Entidad no encontrada";
+      throw error;
+    }
+    return entity;
+  }
+
+  async getByName(name) {
+    if (!name) {
+      const error = new Error();
+      error.status = 400;
+      error.message = "Parametro name debe ser enviado";
+      throw error;
+    }
+
+    const entity = await this.repository.getByName(name);
+    if (!entity) {
+      const error = new Error();
+      error.status = 400;
+      error.message = "Entidad no encontrada";
+      throw error;
+    }
+    return entity;
+  }
+
+  async getAll() {
+    const entity = await this.repository.getAll();
+    if (!entity) {
+      const error = new Error();
+      error.status = 400;
+      error.message = "Entidad no encontrada";
+      throw error;
+    }
+    return entity;
+  }
+
+  async create(data) {
+    const entity = await this.repository.create(data);
+    if (!entity) {
+      const error = new Error();
+      error.status = 400;
+      error.message = "Entidad no encontrada";
+      throw error;
+    }
+    return entity;
+  }
+
+  async update(data) {
+    const entity = await this.repository.update(data);
+    if (!entity) {
+      const error = new Error();
+      error.status = 400;
+      error.message = "Entidad no encontrada";
+      throw error;
+    }
+    return entity;
+  }
+
+  async delete(id) {
+    const entity = await this.repository.delete(id);
+    if (!entity) {
+      const error = new Error();
+      error.status = 400;
+      error.message = "Entidad no encontrada";
+      throw error;
+    }
+    return entity;
+  }
+}
+
+module.exports = BaseService;
+
+// CHILD
+
+const BaseService = require("./base.service");
+
+class CityService extends BaseService {
+  constructor(CityRepository) {
+    super(CityRepository);
+    this._cityRepository = CityRepository;
+  }
+}
+
+module.exports = CityService;
+
+ ```
