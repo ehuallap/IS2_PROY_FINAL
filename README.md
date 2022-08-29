@@ -645,6 +645,7 @@ const CourseStudentsRepository = require("../../domain/repository/courseStudents
 
 // Definicion de funciones
 class ProfessorController {
+  //Obtiene todos los profesores
   async getAll() {
     var professorRepository = new ProfessorRepository(professorDb);
     var professorService = new ProfessorService(professorRepository);
@@ -655,7 +656,8 @@ class ProfessorController {
     });
     return data;
   }
-
+  
+  //Busca profesor por su codigo 
   async findBydCode(code) {
     var professorRepository = new ProfessorRepository(professorDb);
     var professorService = new ProfessorService(professorRepository);
@@ -666,7 +668,8 @@ class ProfessorController {
     });
     return data;
   }
-
+  
+  //vincula curso con estudiante
   async studentInscription(StudentID, CourseID) {
     var inscriptionRepository = new InscriptionRepository(inscriptionDb);
     var inscriptionService = new InscriptionService(inscriptionRepository);
@@ -677,7 +680,8 @@ class ProfessorController {
     });
     return data;
   }
-
+ 
+  //Crea un nuevo horario
   async NuevoHorario(Day, Start, Finish, CourseID) {
     var sheduleRepository = new SheduleRepository(sheduleDb);
     var sheduleService = new SheduleService(sheduleRepository);
@@ -688,7 +692,8 @@ class ProfessorController {
     });
     return data;
   }
-
+ 
+ //se obtiene el horario
   async GetHorario(CourseID) {
     var sheduleRepository = new SheduleRepository(sheduleDb);
     var sheduleService = new SheduleService(sheduleRepository);
@@ -699,7 +704,8 @@ class ProfessorController {
     });
     return data;
   }
-
+  
+  //se crea un nuevo curso
   async NuevoCourse(Course_Name, SectionID, TypeID, ProfessorID, NumEst, Semestre) {
     var courseRepository = new CourseRepository(courseDb);
     var courseService = new CourseService(courseRepository);
@@ -1185,6 +1191,23 @@ module.exports = CourseRepository
 
 Fragmento de Código
 
+```
+const express = require("express");
+const router = express.Router();
+const connectionDb = require("../../config/dbconnections");
+
+class CurseAttendanceModel {
+  async create({ AttendanceId, StudentID, ProfessorID, CourseID }) {
+    const con = connectionDb.promise();
+    const data = await con.query(
+      "INSERT INTO curse_attendances (AttendanceId,StudentID,ProfessorID,CourseID) VALUES (?,?,?,?)",
+      [AttendanceId, StudentID, ProfessorID, CourseID]
+    );
+    return data[0];
+  }
+}
+module.exports = CurseAttendanceModel;
+```
 ## PRINCIPIOS SOLID
 
 - Principio de inversión de dependencia (DIP)
