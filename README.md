@@ -102,7 +102,7 @@ npm run dev
 ```
 
 ## Resumen de conceptos utilizados
-#### ESTILOS DE LA PROGRAMACIÓN
+#### [ESTILOS DE LA PROGRAMACIÓN](#ESTILOS DE LA PROGRAMACIÓN)
 - Letterbox
 - Tantrum
 - Aspects
