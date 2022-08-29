@@ -3,6 +3,7 @@ const router = express.Router();
 const connectionDb = require("../../config/dbconnections");
 
 class CourseStudentsModel {
+  
   async studentsForCourse(token) {
     const conextion = connectionDb.promise();
     const data = await conextion.query(

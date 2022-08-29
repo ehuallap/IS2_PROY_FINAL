@@ -19,11 +19,11 @@ class ProfessorModel {
     return data[0];
   }
 
-  async create({ Department, dataId, idDNI }) {
+  async create({ Department, personId, idDNI }) {
     const con = connectionDb.promise();
     const data = await con.query(
       "INSERT INTO professor (Department,PersonID,idDNI) VALUES (?,?,?)",
-      [Department, dataId, idDNI]
+      [Department, personId, idDNI]
     );
     return data[0];
   }

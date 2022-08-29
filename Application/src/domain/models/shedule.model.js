@@ -26,6 +26,12 @@ class SheduleModel {
     console.log("model", data);
     return data[0];
   }
+
+  async delete(id) {
+    const con = connectionDb.promise();
+    const data = await con.query("DELETE FROM schedule WHERE ScheduleID = ?", [id]);
+    return data[0];
+  }
 }
 
 module.exports = SheduleModel;

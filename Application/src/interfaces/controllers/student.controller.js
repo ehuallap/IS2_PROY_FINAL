@@ -18,10 +18,10 @@ const CourseModel = require("../../domain/models/course.model");
 const courseDb = new CourseModel();
 
 const CourseService = require("../../aplication/services/course.service");
-const CourseRepository = require("../../domain/repository/course.repository");
+const CourseRepository = require("../../repository/course.repository");
 
 const InscriptionService = require("../../aplication/services/inscription.service");
-const InscriptionRepository = require("../../domain/repository/inscription.repository");
+const InscriptionRepository = require("../../repository/inscription.repository");
 
 class StudentController {
   async register({
@@ -51,23 +51,27 @@ class StudentController {
       console.log("Student Controller Error", err);
       return null;
     });
-    const resultStudent = studentDb.create(
+
+    const dataStudent = await studentDb.create(
       StudentID,
       Career,
       Faculty,
       data.insertId
-    );
-    const dataStudent = await result.catch((err) => {
+    ).catch((err) => {
       console.log("Student Controller Error", err);
       return null;
     });
-    const resultLogin = loginDb.create(Email, Password, IMEI, StudentID, 2);
-    const dataLogin = await result.catch((err) => {
-      console.log("Student Controller Error", err);
-      return null;
-    });
-    console.log("dataLogin", dataLogin);
-    return dataLogin;
+
+    if(dataStudent){
+      const dataLogin = await loginDb
+      .create(Email, Password, IMEI, StudentID, 2)
+      .catch((err) => {
+        console.error("Student Controller Error", err);
+        return null;
+      });
+      return dataLogin;
+    }
+    return null;
   }
 
   async login(email, password) {
@@ -87,6 +91,7 @@ class StudentController {
     });
     return data;
   }
+
   async findBydCui(cui) {
     const result = studentDb.findByCui(cui);
     const data = await result.catch((err) => {
@@ -139,30 +144,30 @@ class StudentController {
   }
 
   async deleteById(id, StudentId) {
-    const instanceInscriptionRepository = new InscriptionRepository(
-      inscriptionDb
-    );
-    const instanceInscriptionService = new InscriptionService(
-      instanceInscriptionRepository
-    );
+    const inscriptionRepository = new InscriptionRepository(inscriptionDb);
+    const inscriptionService = new InscriptionService(inscriptionRepository);
+    const courseRepository = new CourseRepository(courseDb);
+    const courseService = new CourseService(courseRepository);
 
-    const data = await instanceInscriptionService
+    const data = await inscriptionService
       .deleteInscription(id, StudentId)
       .catch((err) => {
         console.log("Studentt Controller Error", err);
         return null;
       });
 
-    const instanceCourseRepository = new CourseRepository(courseDb);
-    const instanceCourseService = new CourseService(instanceCourseRepository);
-    const dataCourseUpdate = await instanceCourseService
+    if(data) {
+      const dataCourseUpdate = await courseService
       .updateCantEstDe(id)
       .catch((err) => {
-        console.error("Setudent Controller Error", err);
+        console.error("Student Controller Error", err);
         return null;
       });
 
-    return data;
+      if(!dataCourseUpdate) return null;
+      return data;
+    }
+    return null;
   }
 }
 

@@ -4,11 +4,6 @@ class CourseRepository extends BaseRepository {
   constructor(CourseDb) {
     super(CourseDb);
   }
-
-  async getAllWithoutPagination() {
-    return this.model.find();
-  }
-
   async findByIdProfessor(id) {
     return this.model.findByIdProfessor(id);
   }

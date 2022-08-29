@@ -1,26 +1,32 @@
 const express = require("express");
 const router = express.Router();
+
 const VerifyModel = require("../../domain/models/verify.model");
 const verifyDb = new VerifyModel();
+
 const CityModel = require("../../domain/models/city.model");
 const cityDb = new CityModel();
+
 const SectionModel = require("../../domain/models/section.model");
 const sectionDb = new SectionModel();
+
 const TypeModel = require("../../domain/models/type.model");
 const typeDb = new TypeModel();
+
 const PersonModel = require("../../domain/models/person.model");
 const personDb = new PersonModel();
+
 const CourseModel = require("../../domain/models/course.model");
 const courseDb = new CourseModel();
 
 const CityService = require("../../aplication/services/city.service");
-const CityRepository = require("../../domain/repository/city.repository");
+const CityRepository = require("../../repository/city.repository");
 
 const TypeService = require("../../aplication/services/type.service");
-const TypeRepository = require("../../domain/repository/type.repository");
+const TypeRepository = require("../../repository/type.repository");
 
 const SectionService = require("../../aplication/services/type.service");
-const SectionRepository = require("../../domain/repository/type.repository");
+const SectionRepository = require("../../repository/type.repository");
 
 class DataController {
   async getAllPerson() {

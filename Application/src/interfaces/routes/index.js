@@ -54,11 +54,45 @@ router.get("/vercursos", async function (req, res, next) {
   }
 });
 
+router.get("/vercalendario/:CourseID", async function (req, res, next) {
+  const token = req.cookies.tokenUser;
+  console.log("token", token);
+  if (req.cookies.tokenUser) {
+    const dataCalendar = await professorDb.getDateByCourseId(req.params.CourseID);
+    console.log("asistencias ", dataCalendar);
+    res.render("viewAttendancesDates", {
+      title: "Express",
+      id : req.params.CourseID,
+      Calendar: dataCalendar,
+    });
+  } else {
+    res.redirect("/login");
+  }
+});
+
+router.get("/:CourseID/verasistencias/:Fecha", async function (req, res, next) {
+  const token = req.cookies.tokenUser;
+  if (token) {
+    const dataStudents = await professorDb.getByCourseId(req.params.CourseID,req.params.Fecha);
+    console.log("Estamos imprimiendo las asistencias ", dataStudents);
+    res.render("viewAttendancesByCourse", {
+      title: "Express",
+      students: dataStudents,
+      fecha: req.params.Fecha,
+      asistencias : req.query.asistencias,
+      faltas : req.query.faltas,
+    });
+  } else {
+    res.redirect("/login");
+  }
+});
+
 router.get("/crearcurso", async function (req, res, next) {
   const section = await dataDb.getAllSection();
   const type = await dataDb.getAllType();
   res.render("create", { sections: section, types: type });
 });
+
 
 router.get("/verhorario/:id/:name", async function (req, res, next) {
   const response = await professorDb.getSchedule(req.params.id);
@@ -69,6 +103,29 @@ router.get("/verhorario/:id/:name", async function (req, res, next) {
     horarios: response,
   });
 });
+
+
+router.get("/viewAttendancesByCourse", async function (req, res, next) {
+  res.render("viewAttendancesByCourse", { title: "Express" });
+});
+
+router.get("/viewAttendancesDates", async function (req, res, next) {
+  res.render("viewAttendancesDates", { title: "Express" });
+});
+
+
+router.get("/verasistencias/:id/:name", async function (req, res, next) {
+  const response = await professorDb.getSchedule(req.params.id);
+  console.log("asistencias " + req.params.id, response);
+  res.render("asistencias", {
+    id: req.params.id,
+    name: req.params.name,
+    asistencias: response,
+  });
+});
+
+
+
 
 router.post("/crearhorariochecked/:id/:name", async function (req, res, next) {
   const response = await professorDb.createSchedule(
@@ -132,6 +189,12 @@ router.get("/deletecourse/:id", async (req, res) => {
   const data = await professorDb.deleteCourse(req.params.id);
   console.log("datas", data);
   res.redirect("/vercursos");
+});
+
+router.get("/deleteschedule/:id/:id_schedule/:name", async (req, res) => {
+  const data = await professorDb.deleteSchedule(req.params.id_schedule);
+  console.log("datas", data);
+  res.redirect("/verhorario/" + req.params.id + "/" + req.params.name);
 });
 
 router.get("/deletealumnos/:id/:id_alumno", async (req, res) => {
