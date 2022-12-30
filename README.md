@@ -8,6 +8,9 @@
 - Merisabel Ruelas Quenaya
 - Fiorela Estefany Villarroel Ramos
 - Juan Manuel Soto Begazo
+- Erick
+- Jenny
+- Alvaro
 
 ## ¿Qué es Scooby Attendance?
 El proceso de control de la asistencia en cualquier institución es una parte importante para determinar la eficacia de los servicios ofrecidos por la misma y el interés general de quienes se benefician de los servicios de la institución, en nuestro caso, los estudiantes. Este proceso es una rutina engorrosa, y por ello, el presente artículo propone una nueva forma de reemplazar el antiguo sistema, que implica registros de asistencia que tienen que ser llenados uno por uno para cada alumno, ya que este método requiere mucho tiempo y es propenso a cometer errores, ya sea marcando a un alumno como ausente por error o contando un número erróneo de asistencias cuando hay que entregar informes o estadísticas.
