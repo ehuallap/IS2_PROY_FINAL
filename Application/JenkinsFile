@@ -51,5 +51,20 @@ node ('nodejs') {
     if (env.DEPLOYMENT_ENVIRONMENT != 'no_deploy') {
       catchError { sh './deploy.sh' }
     }
+
+
   }
+
+stage('SonarQube analysis') {
+        steps {
+            script{
+            def scannerHome = tool 'sonarscan';
+            withSonarQubeEnv('sonarqube') {
+                sh "${tool("sonarscan")}/bin/sonar-scanner \
+                    -Dsonar.projectKey=app \
+                    -Dsonar.projectName=app"
+            }
+            }
+        }
+    }
 }
