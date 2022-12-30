@@ -19,4 +19,5 @@ En este caso para el proyecto simplemente realizamos un scaneo manual, en el cua
 #### Resumen Exportado
 ![Resumen](https://github.com/ehuallap/IS2_PROY_FINAL/blob/JuanManuel/OWASP-%20ZAP/Resumen.png "Resumen")
 
-
+#### Resumen
+En total obtuvimos 6 alertas "Medium", 7 alertas "Low" y 5 alertas "Informational". NO obtuvimos alertas "High".
