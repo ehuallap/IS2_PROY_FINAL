@@ -154,6 +154,111 @@ Asimismo, también se analiza con el SonarLint en Visual Studio Code:
 </p>
 Como se puede observar, no se encontraron issues en ninguna de las 2 herramientas y se escaneó con éxito el código.
 
+## PRUEBAS UNITARIAS
+## Pruebas Unitarias
+
+### JEST
+
+Es común en JavaScript que el código se ejecute de forma asíncrona. Cuando tiene un código que se ejecuta de forma asíncrona, Jest necesita saber cuándo se ha completado el código que está probando, antes de poder pasar a otra prueba. Jest tiene varias formas de manejar esto.
+
+TEST STUDENTS
+
+```javascript
+require("dotenv").config();
+const express = require("express");
+const mysql = require("mysql2");
+const StudentController = require("../src/interfaces/controllers/student.controller");
+const studentDb = new StudentController();
+
+describe("connection", () => {
+  beforeAll(async () => {
+    await mysql.createPool({
+      host: process.env.HOST,
+      user: process.env.USER,
+      database: process.env.DATABASE,
+      password: process.env.PASSWORD,
+    });
+  });
+
+  test("Get Course By ID", async () => {
+    const id = 1;
+    const course = await studentDb.findByIdCourse(id);
+    console.log(course);
+    expect(course).not.toBe(null);
+  });
+
+  test("Get All student", async () => {
+    const student = await studentDb.getAll();
+    console.log(student);
+    expect(student).not.toBe(null);
+  });
+
+  test("Get All", async () => {
+    const id = 1;
+    const course = await studentDb.findByIdCourse(id);
+    console.log(course);
+    expect(course).not.toBe(null);
+  });
+});
+```
+
+```javascript
+require("dotenv").config();
+const express = require("express");
+const mysql = require("mysql2");
+const DataController = require("../src/interfaces/controllers/data.controller");
+const dataDb = new DataController();
+
+describe("connection", () => {
+  beforeAll(async () => {
+    await mysql.createPool({
+      host: process.env.HOST,
+      user: process.env.USER,
+      database: process.env.DATABASE,
+      password: process.env.PASSWORD,
+    });
+  });
+
+  test("Get All cities", async () => {
+    const cities = await dataDb.getAllCities();
+    expect(cities).not.toBe(null);
+  });
+
+  test("Get All Persons", async () => {
+    const persons = await dataDb.getAllPerson();
+    expect(persons).not.toBe(null);
+  });
+
+  test("Get All Verify", async () => {
+    const verify = await dataDb.getAllVerify();
+    expect(verify).not.toBe(null);
+  });
+
+  test("Get Data Verify Cui", async () => {
+    const cui = 20200727;
+    const verify = await dataDb.getDataVerifyByCui(cui);
+    expect(verify).not.toBe(null);
+  });
+
+  test("Get Data Verify Cui", async () => {
+    const cui = 20200727;
+    const verify = await dataDb.getAllType(cui);
+    expect(verify).not.toBe(null);
+  });
+
+  test("Get All Sections", async () => {
+    const cui = 20200727;
+    const verify = await dataDb.getAllSection(cui);
+    expect(verify).not.toBe(null);
+  });
+
+  test("Get City By name", async () => {
+    const name = "Arequipa";
+    const verify = await dataDb.findCityByName(name);
+    expect(verify).not.toBe(null);
+  });
+});
+```
 
 ## PRUEBAS DE PERFORMANCE
 Los pasos a seguir para la realizacion de las pruebas perforance son las siguientes
