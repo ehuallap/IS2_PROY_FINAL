@@ -13,6 +13,6 @@ Se descargo el Jmeter Binario con el zip
 Se visualiza jmeter
 
 ![is3](https://user-images.githubusercontent.com/86405228/209915773-5e2c1de3-3a78-4c60-8317-4187bcce8b9a.png)
-### Usamos la apicacion en el jmeter
-### Analizamos la Prueba de Performance
-### Mostraos resultados
+### Usamos la aplicacion en el jmeter
+
+![is4](https://user-images.githubusercontent.com/86405228/210023828-1060a6b0-b057-4f82-ab97-c875f23dec23.png)
