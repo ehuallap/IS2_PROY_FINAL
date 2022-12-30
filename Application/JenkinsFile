@@ -21,7 +21,7 @@ node ('nodejs') {
     catchError {
       sh 'npm test'
       // Publish our test and coverage reports
-      step([$class: 'JUnitResultArchiver', testResults: 'tests/test-report.xml'])
+      step([$class: 'JUnitResultArchiver', testResults: 'test/test-report.xml'])
       step([
         $class: 'CloverPublisher',
         cloverReportDir: 'tests',
