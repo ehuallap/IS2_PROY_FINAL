@@ -142,19 +142,7 @@ Estas seran las issues una vez cerradas y resueltas.
 </p>
 
 Una vez publicado nuestra issue, tenemos que resolverla obviamente. Para cerrar una issue podemos hacerlo desde el panel principal.
-## Analisis estático
-Entonces, una vez realizadas las refactorizaciones por cada integrante del equipo, se volvió a realizar un escaneo con el SonarQube sobre el proyecto, a
-continuación se muestran los resultados:
-<p align="center">
-  <img src="https://github.com/ehuallap/IS2_PROY_FINAL/blob/develop/Evidences/sonar.PNG" alt="Sublime's custom image"/>
-</p>
-Asimismo, también se analiza con el SonarLint en Visual Studio Code:
-<p align="center">
-  <img src="https://github.com/ehuallap/IS2_PROY_FINAL/blob/develop/Evidences/sonarLint.PNG" alt="Sublime's custom image"/>
-</p>
-Como se puede observar, no se encontraron issues en ninguna de las 2 herramientas y se escaneó con éxito el código.
 
-## PRUEBAS UNITARIAS
 ## Pruebas Unitarias
 
 ### JEST
