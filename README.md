@@ -314,3 +314,90 @@ En este caso para el proyecto simplemente realizamos un scaneo manual, en el cua
 
 #### Resumen
 En total obtuvimos 6 alertas "Medium", 7 alertas "Low" y 5 alertas "Informational". NO obtuvimos alertas "High".
+
+## Pruebas Funcionales
+
+Una prueba funcional es una prueba de tipo caja negra basada en la ejecución, revisión y retroalimentación de las funcionalidades previamente diseñadas para el software.Las pruebas Funcionales ven a la app  desde el punto de vista del usuario y prueba que el sistema hace lo que debe y sobre todo, lo que se ha especificado.
+
+A continuación se presentan las pruebas funcionales de acuerdo a las especificaciones de la aplicación desarrolada.
+
+## Scripts de Pruebas
+
+### Caso de Uso: Iniciar Sesión
+---
+![Caso](/Evidences/t_01.png)
+
+**Evidencia**
+![Descripción de la imagen](/Evidences/01.jpg)
+
+### Caso de Uso:  Registrarse
+---
+![Caso](/Evidences/t_02.png)
+
+**Evidencia**
+![Descripción de la imagen](/Evidences/02.jpg)
+
+### Caso de Uso:  Crear Curso
+---
+![Caso](/Evidences/t_03.png)
+
+**Evidencia**
+![Descripción de la imagen](/Evidences/03.jpg)
+
+### Caso de Uso:  Ver cursos
+---
+![Caso](/Evidences/t_04.png)
+
+**Evidencia**
+![Descripción de la imagen](/Evidences/04.jpg)
+
+### Caso de Uso:  Ver Alumnos en curso
+---
+![Caso](/Evidences/t_05.png)
+
+**Evidencia**
+![Descripción de la imagen](/Evidences/05.jpg)
+
+### Caso de Uso:  Editar curso
+---
+![Caso](/Evidences/t_06.png)
+
+**Evidencia**
+![Descripción de la imagen](/Evidences/06.jpg)
+
+<!-- ### Caso de Uso:   
+
+![Caso](/Evidences/t_07.png)
+
+**Evidencia**
+![Descripción de la imagen](/Evidences/07.jpg)
+
+### Caso de Uso: Generar Reportes
+
+![Caso](/Evidences/t_08.png)
+
+**Evidencia**
+![Descripción de la imagen](/Evidences/08.jpg) -->
+
+### Caso de Uso:  Ver Horario
+---
+![Caso](/Evidences/t_09.png)
+
+**Evidencia**
+![Descripción de la imagen](/Evidences/09.jpg)
+
+### Caso de Uso:  Ver Asistencias
+---
+![Caso](/Evidences/t_10.png)
+
+**Evidencia**
+![Descripción de la imagen](/Evidences/10.jpg)
+
+### Caso de Uso:  Generar Reporte Asistencia
+---
+![Caso](/Evidences/t_11.png)
+
+**Evidencia**
+![Descripción de la imagen](/Evidences/11_01.jpg)
+![Descripción de la imagen](/Evidences/11_02.jpg)
+
