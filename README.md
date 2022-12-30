@@ -5,9 +5,18 @@ En este caso para el proyecto simplemente realizamos un scaneo manual, en el cua
 [![Alertas](https://github.com/ehuallap/IS2_PROY_FINAL/blob/JuanManuel/OWASP-%20ZAP/Alertas.jpg "Alertas")](https://github.com/ehuallap/IS2_PROY_FINAL/blob/JuanManuel/OWASP-%20ZAP/Alertas.jpg "Alertas")
 
 #### Progreso del Scanneo
+![Progreso](https://github.com/ehuallap/IS2_PROY_FINAL/blob/JuanManuel/OWASP-%20ZAP/Proreso-Scann.jpg "Progreso")
 
-#### Resumen de Scanneo
+#### Scanneo Terminado
+![Terminado](https://github.com/ehuallap/IS2_PROY_FINAL/blob/JuanManuel/OWASP-%20ZAP/Scann.jpg "Terminado")
+
+#### Resumen de sitios Explorados
+![Sitios Explorados](https://github.com/ehuallap/IS2_PROY_FINAL/blob/JuanManuel/OWASP-%20ZAP/Sites.jpg "Sitios Explorados")
 
 #### Exportación de Scanneo
+![Exportación de Vulnerabilidades](https://github.com/ehuallap/IS2_PROY_FINAL/blob/JuanManuel/OWASP-%20ZAP/Exportando.png "Exportación de Vulnerabilidades")
+
+#### Resumen Exportado
+![Resumen](https://github.com/ehuallap/IS2_PROY_FINAL/blob/JuanManuel/OWASP-%20ZAP/Resumen.png "Resumen")
 
 
