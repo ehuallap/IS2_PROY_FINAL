@@ -39,7 +39,7 @@ class DataController {
     });
     return data;
   }
-
+  
   async getAllVerify() {
     const instanceVerifyRepository = new VerifyRepository(personDb);
     const instanceVerifyService = new VerifyService(instanceVerifyRepository);
